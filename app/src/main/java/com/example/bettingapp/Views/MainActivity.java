@@ -1,8 +1,10 @@
-package com.example.bettingapp;
+package com.example.bettingapp.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.bettingapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
