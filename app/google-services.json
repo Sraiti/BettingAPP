@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "528443566486",
-    "firebase_url": "https://bettingapp-10dce.firebaseio.com",
-    "project_id": "bettingapp-10dce",
-    "storage_bucket": "bettingapp-10dce.appspot.com"
+    "project_number": "81039508373",
+    "firebase_url": "https://bettingapp-9f86a.firebaseio.com",
+    "project_id": "bettingapp-9f86a",
+    "storage_bucket": "bettingapp-9f86a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:528443566486:android:342a3fb93b1d362214d5b7",
+        "mobilesdk_app_id": "1:81039508373:android:b4bd34fa08d19e4cb62c9c",
         "android_client_info": {
           "package_name": "com.example.bettingapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "528443566486-0ceep3otketodkajtei0jqhp246igpfi.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.bettingapp",
-            "certificate_hash": "cbf35c8a3ffadef295349df48c278356acb34f57"
-          }
-        },
-        {
-          "client_id": "528443566486-gad4ar9fpl9hi04sdujgunct76pvjh37.apps.googleusercontent.com",
+          "client_id": "81039508373-h5s79mlgpmaike74jrbo5k6afjvhmo75.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDmRzozezw5bzEyJ1W4hCUzQ_5F1ED4kmk"
+          "current_key": "AIzaSyDVHnCqVpCSBN3EZMHBwnGwZ0NMK9FdU6s"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "528443566486-gad4ar9fpl9hi04sdujgunct76pvjh37.apps.googleusercontent.com",
+              "client_id": "81039508373-h5s79mlgpmaike74jrbo5k6afjvhmo75.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
