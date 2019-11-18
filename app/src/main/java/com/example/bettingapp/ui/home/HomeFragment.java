@@ -1,5 +1,6 @@
 package com.example.bettingapp.ui.home;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +12,16 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.viewpager.widget.ViewPager;
 
+import com.example.bettingapp.Adapters.fragment_adapter;
 import com.example.bettingapp.R;
+import com.example.bettingapp.Views.TabToday;
+import com.example.bettingapp.Views.TabYesterday;
+import com.google.android.material.tabs.TabLayout;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements TabToday.OnFragmentInteractionListener,
+        TabYesterday.OnFragmentInteractionListener {
 
     private HomeViewModel homeViewModel;
 
@@ -22,14 +29,23 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        TabLayout tabLayout = root.findViewById(R.id.tablayout);
+        tabLayout.addTab(tabLayout.newTab().setText("Today"));
+        tabLayout.addTab(tabLayout.newTab().setText("yesterday"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        final ViewPager viewPager = root.findViewById(R.id.viewpagerToday);
+        final fragment_adapter adapter = new fragment_adapter(getChildFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
         return root;
+    }
+
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

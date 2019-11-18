@@ -1,7 +1,10 @@
 package com.example.bettingapp;
 
+import android.net.Uri;
 import android.os.Bundle;
 
+import com.example.bettingapp.Views.TabToday;
+import com.example.bettingapp.Views.TabYesterday;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -23,7 +26,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity implements TabYesterday.OnFragmentInteractionListener, TabToday.OnFragmentInteractionListener {
 
     private AppBarConfiguration mAppBarConfiguration;
     FirebaseFirestore db =FirebaseFirestore.getInstance();
@@ -69,5 +72,10 @@ public class Main2Activity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
