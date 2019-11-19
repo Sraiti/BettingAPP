@@ -29,13 +29,11 @@ import android.view.Menu;
 public class Main2Activity extends AppCompatActivity implements TabYesterday.OnFragmentInteractionListener, TabToday.OnFragmentInteractionListener {
 
     private AppBarConfiguration mAppBarConfiguration;
-    FirebaseFirestore db =FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       CollectionReference dbr= db.collection("Matches");
-        setContentView(R.layout.activity_main2);
+         setContentView(R.layout.activity_main2);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);

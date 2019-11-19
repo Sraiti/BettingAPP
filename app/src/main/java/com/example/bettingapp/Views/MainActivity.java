@@ -8,8 +8,7 @@ import com.example.bettingapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    int i;
-    @Override
+     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
