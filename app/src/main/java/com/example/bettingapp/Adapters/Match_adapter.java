@@ -67,8 +67,8 @@ public class Match_adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 // Continue to default
             default:
                 View menuItemLayoutView = LayoutInflater.from(viewGroup.getContext()).inflate(
-                        R.layout.category_container, viewGroup, false);
-                return new CategoryViewHolder(menuItemLayoutView);
+                        R.layout.item, viewGroup, false);
+                return new MatchViewHolder(menuItemLayoutView);
 
         }
     }

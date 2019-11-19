@@ -1,5 +1,6 @@
 package com.example.bettingapp.ui.home;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,11 +25,13 @@ public class HomeFragment extends Fragment implements TabToday.OnFragmentInterac
         TabYesterday.OnFragmentInteractionListener {
 
     private HomeViewModel homeViewModel;
+    Context context;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
+        this.context = context;
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         TabLayout tabLayout = root.findViewById(R.id.tablayout);
