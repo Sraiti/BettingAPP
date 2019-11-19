@@ -1,9 +1,10 @@
-package com.example.bettingapp;
+package com.example.bettingapp.Views;
 
 import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.bettingapp.AdsManager.ads_manager;
+import com.example.bettingapp.R;
 import com.example.bettingapp.Views.TabToday;
 import com.example.bettingapp.Views.TabYesterday;
 import com.google.android.gms.ads.AdListener;
@@ -67,11 +68,19 @@ public class Main2Activity extends AppCompatActivity implements TabYesterday.OnF
         mAdView = findViewById(R.id.adView);
         manager=ads_manager.getInstance();
         manager.load_admob_banner(this);
+        manager.fbLoadBanner(this);
+        manager.loadIntersAdmob(this);
         manager.adView.setAdListener(new AdListener(){
             @Override
             public void onAdLoaded() {
                 super.onAdLoaded();
                 mAdView.addView(manager.adView);
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                mAdView.addView(manager.fbadView);
             }
         });
 

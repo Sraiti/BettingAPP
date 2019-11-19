@@ -1,14 +1,13 @@
-package com.example.bettingapp;
+package com.example.bettingapp.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.Toast;
 
 import com.example.bettingapp.AdsManager.DataFireStore;
-import com.example.bettingapp.Views.MainActivity;
+import com.example.bettingapp.R;
 
 public class Splash extends AppCompatActivity {
 
