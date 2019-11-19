@@ -21,8 +21,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -31,8 +29,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class Main2Activity extends AppCompatActivity implements TabYesterday.OnFragmentInteractionListener, TabToday.OnFragmentInteractionListener {
 
@@ -119,5 +120,16 @@ public class Main2Activity extends AppCompatActivity implements TabYesterday.OnF
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    public String getGMTtime() {
+        final Date currentTime = new Date();
+
+        final SimpleDateFormat sdf =
+                new SimpleDateFormat("EEE, MMM d, yyyy hh:mm:ss a z");
+
+        // Give it to me in GMT time.
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        return sdf.format(currentTime);
     }
 }
