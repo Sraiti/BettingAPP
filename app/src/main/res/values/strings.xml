@@ -1,20 +1,20 @@
 <resources>
-    <string name="app_name">bettingapp</string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="app_name">BTTS 2019/2020</string>
+    <string name="title_activity_main2">BTTS 2019/2020</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Sure Betting Tips</string>
+    <string name="nav_header_subtitle">specialones@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="ad_unit_id">ca-app-pub-3940256099942544/8135179316</string>
     <string name="admob_banner_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="interstitial">ca-app-pub-3940256099942544/1033173712</string>
 
 
-    <string name="ad_attribution"  translatable="false">Ad</string>
+    <string name="ad_attribution" translatable="false">Ad</string>
     <string name="dialog_close_msg">Are you sure you want to quit?</string>
     <string name="search">search</string>
     <string name="gdbr">gdpr</string>
@@ -25,4 +25,8 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="countact">Contact Us</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="gdpr">GDPR</string>
+    <string name="contact">Contact Us</string>
 </resources>

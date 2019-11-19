@@ -12,21 +12,21 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/contact_us"
         android:name="com.example.bettingapp.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/contact"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/privacy"
         android:name="com.example.bettingapp.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/privacy"
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
-        android:id="@+id/nav_tools"
+        android:id="@+id/gdpr"
         android:name="com.example.bettingapp.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
+        android:label="@string/gdbr"
         tools:layout="@layout/fragment_tools" />
 
     <fragment
