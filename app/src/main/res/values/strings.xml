@@ -29,4 +29,6 @@
     <string name="privacy">Privacy Policy</string>
     <string name="gdpr">GDPR</string>
     <string name="contact">Contact Us</string>
+    <string name="sendEmail">Send Email</string>
+    <string name="Emailrecerver">specialonse@gmail.com</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.bettingapp.ui.slideshow;
+package com.example.bettingapp.ui.privacy;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
