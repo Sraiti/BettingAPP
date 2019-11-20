@@ -1,24 +1,30 @@
 package com.example.bettingapp.Views;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-
-
+import com.example.bettingapp.Adapters.Match_adapter;
+import com.example.bettingapp.Moduls.match;
 import com.example.bettingapp.R;
-
-
+import com.google.android.gms.ads.formats.UnifiedNativeAd;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.TimeZone;
 
 
 public class TabToday extends Fragment implements Serializable {
@@ -28,14 +34,13 @@ public class TabToday extends Fragment implements Serializable {
     private static final String ARG_PARAM2 = "param2";
 
 
-
-
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
 
+    List<Object> Todaylist = new ArrayList<>();
 
 
     public TabToday() {
@@ -67,17 +72,37 @@ public class TabToday extends Fragment implements Serializable {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        Main2Activity activity = (Main2Activity) getActivity();
+        Todaylist = activity.getRecyclerViewItems();
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
-        View tabToday = inflater.inflate(R.layout.fragment_today, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_today, container, false);
+        RecyclerView mRecyclerView = rootView.findViewById(R.id.recyclerToday);
 
+        // Use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView.
+        mRecyclerView.setHasFixedSize(true);
 
+        // Specify a linear layout manager.
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(layoutManager);
 
-        return tabToday;
+        // Specify an adapter.
+        RecyclerView.Adapter<RecyclerView.ViewHolder> adapter = new Match_adapter(getActivity(), Todaylist);
+        mRecyclerView.setAdapter(adapter);
+
+        adapter.notifyDataSetChanged();
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -132,4 +157,6 @@ public class TabToday extends Fragment implements Serializable {
         void onFragmentInteraction(Uri uri);
 
     }
+
+
 }

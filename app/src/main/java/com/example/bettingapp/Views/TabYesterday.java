@@ -3,15 +3,28 @@ package com.example.bettingapp.Views;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bettingapp.Adapters.Match_adapter;
+import com.example.bettingapp.Moduls.match;
 import com.example.bettingapp.R;
+import com.google.android.gms.ads.formats.UnifiedNativeAd;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.TimeZone;
 
 
 public class TabYesterday extends Fragment implements Serializable {
@@ -27,6 +40,7 @@ public class TabYesterday extends Fragment implements Serializable {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    List<Object> Yesterdaylist = new ArrayList<>();
 
     public TabYesterday() {
         // Required empty public constructor
@@ -56,18 +70,42 @@ public class TabYesterday extends Fragment implements Serializable {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+
         }
+        Main2Activity activity = (Main2Activity) getActivity();
+
+        Yesterdaylist = activity.getRecyclerViewItems();
+
+
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        View tabYesterday = inflater.inflate(R.layout.fragment_yesterday, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_yesterday, container, false);
+        RecyclerView mRecyclerView = rootView.findViewById(R.id.recyclerYesterday);
+
+        // Use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView.
+        mRecyclerView.setHasFixedSize(true);
+
+        // Specify a linear layout manager.
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(layoutManager);
 
 
+////        // Specify an adapter.
+        RecyclerView.Adapter<RecyclerView.ViewHolder> adapter = new Match_adapter(getActivity(), Yesterdaylist);
+        mRecyclerView.setAdapter(adapter);
 
-        return tabYesterday;
+        adapter.notifyDataSetChanged();
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -82,6 +120,7 @@ public class TabYesterday extends Fragment implements Serializable {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
+
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -120,6 +159,35 @@ public class TabYesterday extends Fragment implements Serializable {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+
+    }
+
+
+    public Date getGMTtime() {
+//        final Date currentTime = new Date();
+//
+//         final SimpleDateFormat sdf =
+//                new SimpleDateFormat("d mon yyyy hh:mm:ss GMT");
+//
+//        // Give it to me in GMT time.
+//        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+//        return sdf.format(currentTime);
+
+
+        SimpleDateFormat dateFormatGmt = new SimpleDateFormat("yyyy-MMM-dd");
+        dateFormatGmt.setTimeZone(TimeZone.getTimeZone("GMT"));
+
+//Local time zone
+        SimpleDateFormat dateFormatLocal = new SimpleDateFormat("yyyy-MMM-dd");
+
+//Time in GMT
+        try {
+            return dateFormatLocal.parse(dateFormatGmt.format(new Date()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+
 
     }
 }

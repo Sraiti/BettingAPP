@@ -1,7 +1,6 @@
 package com.example.bettingapp.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,10 +19,15 @@ import com.example.bettingapp.ViewHolders.UnifiedNativeAdViewHolder;
 import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
+import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
-public class Match_adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
+public class Match_adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     // A menu item view type.
     private static final int MENU_ITEM_VIEW_TYPE = 0;
@@ -31,11 +36,41 @@ public class Match_adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private final Context mContext;
 
-    private final List<Object> mRecyclerViewItems;
+    private List<Object> mRecyclerViewItems = new ArrayList<>();
+
+    List<match> MatchList;
+    List<UnifiedNativeAd> NativeList;
 
     public Match_adapter(Context context, List<Object> recyclerViewItems) {
         this.mContext = context;
-        this.mRecyclerViewItems = recyclerViewItems;
+
+
+        mRecyclerViewItems = recyclerViewItems;
+    }
+
+
+    private boolean CompareDate(Object item) {
+
+        match match = (match) item;
+
+
+        Date date = match.getTimestamp().toDate();
+
+
+        SimpleDateFormat dateFormatGmt = new SimpleDateFormat("yyyy-MMM-dd");
+        dateFormatGmt.setTimeZone(TimeZone.getTimeZone("GMT"));
+
+//Local time zone
+
+
+        String DateGMT = dateFormatGmt.format(new Date());
+        Toast.makeText(mContext, DateGMT, Toast.LENGTH_SHORT).show();
+
+        if (DateGMT.equals(date.toString())) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
 
@@ -87,14 +122,25 @@ public class Match_adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 // execute the default
 
             default:
-                MatchViewHolder CategoryHolder = (MatchViewHolder) holder;
+                MatchViewHolder MatchHolder = (MatchViewHolder) holder;
                 final match menuItem = (match) Item;
 
-                // Get the menu item image with Picasso.
 
-                    }
+                MatchHolder.TeamA.setText(menuItem.getTeamA());
+                MatchHolder.TeamB.setText(menuItem.getTeamB());
+                MatchHolder.League.setText(menuItem.getLeague());
+                MatchHolder.cote.setText(menuItem.getCote());
+                MatchHolder.expectation.setText(menuItem.getExpectation());
+
+                String imagePath = menuItem.getImage();
+                Picasso.get()
+                        .load(imagePath)
+                        .into(MatchHolder.image);
+
 
         }
+
+    }
 
 
     private void populateNativeAdView(UnifiedNativeAd nativeAd,

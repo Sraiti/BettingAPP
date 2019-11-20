@@ -40,15 +40,16 @@ public class fragment_adapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        TabToday tabToday = new TabToday();
+        TabYesterday tabYesterday = new TabYesterday();
+
         switch (position) {
             case 0:
-                TabToday tabToday = new TabToday();
                 return tabToday;
             case 1:
-                TabYesterday tabYesterday = new TabYesterday();
                 return tabYesterday;
             default:
-                return null;
+                return tabToday;
         }
 
     }
