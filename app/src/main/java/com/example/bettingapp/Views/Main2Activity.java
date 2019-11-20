@@ -199,7 +199,8 @@ public class Main2Activity extends AppCompatActivity implements TabYesterday.OnF
         int index = 0;
         for (UnifiedNativeAd ad : mNativeAds) {
             //Comment this to close the native Ads
-            //mRecyclerViewItems.add(index, ad);
+            fireStoreManager.mRecyclerViewItemsyesterday.add(index, ad);
+            fireStoreManager.mRecyclerViewItemsToday.add(index, ad);
             index = index + 2;
         }
     }
