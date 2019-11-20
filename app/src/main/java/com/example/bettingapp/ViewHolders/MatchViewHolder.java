@@ -14,24 +14,23 @@ import java.util.Date;
 public class MatchViewHolder extends RecyclerView.ViewHolder {
 
 
-    public TextView TeamA;
-    public TextView TeamB;
+    public TextView team1;
+    public TextView team2;
     public TextView League;
-    public TextView Time;
+    public TextView time;
     public TextView cote;
     public TextView expectation;
-    public ImageView image;
     public View mView;
     public MatchViewHolder (@NonNull View itemView) {
         super(itemView);
 
-        TeamA = itemView.findViewById(R.id.txt_teamA);
-        TeamB = itemView.findViewById(R.id.txt_TeamB);
+        team1 = itemView.findViewById(R.id.txt_teamA);
+        team2 = itemView.findViewById(R.id.txt_TeamB);
         League = itemView.findViewById(R.id.txt_league);
-        Time = itemView.findViewById(R.id.txt_time);
+        time = itemView.findViewById(R.id.txt_time);
         expectation = itemView.findViewById(R.id.txt_expectation);
         cote = itemView.findViewById(R.id.txt_cote);
-        image = itemView.findViewById(R.id.img_match);
+
 
         mView = itemView;
 

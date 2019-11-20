@@ -103,11 +103,18 @@ public class Match_adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 final match menuItem = (match) Item;
 
 
-                MatchHolder.TeamA.setText(menuItem.getTeam1());
-                MatchHolder.TeamB.setText(menuItem.getTeam2());
+                MatchHolder.team1.setText(menuItem.getTeam1());
+                MatchHolder.team2.setText(menuItem.getTeam2());
                 MatchHolder.League.setText(menuItem.getLeague());
                 MatchHolder.cote.setText(menuItem.getCote());
                 MatchHolder.expectation.setText(menuItem.getExpectation());
+                MatchHolder.time.setText(menuItem.getTime());
+                if (menuItem.getStatue()==0){
+                    MatchHolder.cote.setBackgroundColor(mContext.getResources().getColor(R.color.flatui_pomegranate));
+                }else if (menuItem.getStatue()==1){
+                    MatchHolder.cote.setBackgroundColor(mContext.getResources().getColor(R.color.color1));
+                }
+
 
 
 
