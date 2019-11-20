@@ -1,53 +1,65 @@
 <com.google.android.gms.ads.formats.UnifiedNativeAdView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:id="@+id/ad_view"
     android:layout_height="wrap_content">
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@color/white"
-        android:minHeight="50dp"
-        android:orientation="vertical">
-
-        <TextView style="@style/AppTheme.AdAttribution"/>
+        app:cardCornerRadius="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="3dp">
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            android:minHeight="50dp"
+            android:orientation="vertical">
+
+            <TextView style="@style/AppTheme.AdAttribution" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="3dp"
+                android:paddingRight="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:id="@+id/ad_icon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:adjustViewBounds="true"
-                        android:paddingBottom="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingEnd="5dp"/>
-                    <TextView
-                        android:id="@+id/ad_headline"
+                    android:orientation="vertical">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/flatui_midnight_blue"
-                        android:textSize="12sp"
-                        android:textStyle="normal" />
-                </LinearLayout>
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ad_icon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:adjustViewBounds="true"
+                            android:paddingEnd="5dp"
+                            android:paddingRight="5dp"
+                            android:paddingBottom="5dp" />
+
+                        <TextView
+                            android:id="@+id/ad_headline"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/flatui_midnight_blue"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -59,7 +71,7 @@
                             android:gravity="bottom"
                             android:textColor="@color/flatui_emerald"
                             android:textSize="11sp"
-                            android:textStyle="normal"/>
+                            android:textStyle="normal" />
 
                         <RatingBar
                             android:id="@+id/ad_stars"
@@ -83,34 +95,32 @@
                     android:id="@+id/ad_body"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
                     android:textColor="@color/flatui_wet_asphalt"
-                    android:layout_marginEnd="20dp"
                     android:textSize="12sp" />
 
                 <com.google.android.gms.ads.formats.MediaView
                     android:id="@+id/ad_media"
-                    android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="170dp"
-                     />
+                    android:layout_gravity="center_horizontal" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="right"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/ad_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
                         android:paddingStart="5dp"
-                        android:paddingRight="5dp"
+                        android:paddingLeft="5dp"
                         android:paddingEnd="5dp"
+                        android:paddingRight="5dp"
                         android:textSize="12sp" />
 
                     <TextView
@@ -122,14 +132,18 @@
 
                     <Button
                         android:id="@+id/ad_call_to_action"
-                        android:background="@color/flatui_alizarin"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="40dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginBottom="6dp"
+                        android:background="@drawable/custum_dialog_button_ads"
                         android:gravity="center"
-                        android:textSize="12sp"
                         android:textColor="@color/color4"
-                        android:layout_marginBottom="6dp"/>
+                        android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
 </com.google.android.gms.ads.formats.UnifiedNativeAdView>

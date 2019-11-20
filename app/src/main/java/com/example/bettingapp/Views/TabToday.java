@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -14,8 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bettingapp.Adapters.Match_adapter;
+import com.example.bettingapp.AdsManager.DataFireStore;
 import com.example.bettingapp.Moduls.match;
 import com.example.bettingapp.R;
+import com.example.bettingapp.util.FireStore;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 
 import java.io.Serializable;
@@ -42,7 +45,7 @@ public class TabToday extends Fragment implements Serializable {
 
     List<Object> Todaylist = new ArrayList<>();
 
-
+    private TextView wait;
     public TabToday() {
         // Required empty public constructor
     }
@@ -84,10 +87,12 @@ public class TabToday extends Fragment implements Serializable {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        FireStore fireStore=FireStore.getInstence();
 
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_today, container, false);
         RecyclerView mRecyclerView = rootView.findViewById(R.id.recyclerToday);
+
 
         // Use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView.
@@ -98,7 +103,7 @@ public class TabToday extends Fragment implements Serializable {
         mRecyclerView.setLayoutManager(layoutManager);
 
         // Specify an adapter.
-        RecyclerView.Adapter<RecyclerView.ViewHolder> adapter = new Match_adapter(getActivity(), Todaylist);
+        RecyclerView.Adapter<RecyclerView.ViewHolder> adapter = new Match_adapter(getActivity(), fireStore.mRecyclerViewItemsToday);
         mRecyclerView.setAdapter(adapter);
 
         adapter.notifyDataSetChanged();

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,11 +48,12 @@ public class Main2Activity extends AppCompatActivity implements TabYesterday.OnF
 
     private AdLoader adLoader;
     private List<UnifiedNativeAd> mNativeAds = new ArrayList<>();
-    private List<Object> mRecyclerViewItems = new ArrayList<>();
+
 
 
     private LinearLayout mAdView;
     private ads_manager manager;
+
 
 
     @Override
@@ -81,33 +83,33 @@ public class Main2Activity extends AppCompatActivity implements TabYesterday.OnF
                 mAdView.addView(manager.fbadView);
             }
         });
-
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.contact_us, R.id.privacy,
+                R.id.gdpr, R.id.nav_share, R.id.nav_send)
+                .setDrawerLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(Main2Activity.this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(Main2Activity.this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
         GetData(new FireStoreCallback() {
             @Override
             public void OnCallBack(List<Object> List) {
 
-                Toolbar toolbar = findViewById(R.id.toolbar);
-                setSupportActionBar(toolbar);
-                FloatingActionButton fab = findViewById(R.id.fab);
-                fab.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
-                    }
-                });
-                DrawerLayout drawer = findViewById(R.id.drawer_layout);
-                NavigationView navigationView = findViewById(R.id.nav_view);
-                // Passing each menu ID as a set of Ids because each
-                // menu should be considered as top level destinations.
-                mAppBarConfiguration = new AppBarConfiguration.Builder(
-                        R.id.nav_home, R.id.contact_us, R.id.privacy,
-                        R.id.gdpr, R.id.nav_share, R.id.nav_send)
-                        .setDrawerLayout(drawer)
-                        .build();
-                NavController navController = Navigation.findNavController(Main2Activity.this, R.id.nav_host_fragment);
-                NavigationUI.setupActionBarWithNavController(Main2Activity.this, navController, mAppBarConfiguration);
-                NavigationUI.setupWithNavController(navigationView, navController);
+
 
             }
         });
@@ -175,28 +177,12 @@ public class Main2Activity extends AppCompatActivity implements TabYesterday.OnF
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        db.collection("match")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("TAG", document.getId() + " => " + document.getData());
-                                mRecyclerViewItems.add(document.toObject(match.class));
-                            }
-                        } else {
-                            Log.d("TAG", "Error getting documents: ", task.getException());
-                        }
-                        callback.OnCallBack(mRecyclerViewItems);
 
-                    }
-                });
     }
 
     public List<Object> getRecyclerViewItems() {
 
-        return mRecyclerViewItems;
+        return null;
     }
 
     private void insertAdsInMenuItems() {
@@ -204,13 +190,13 @@ public class Main2Activity extends AppCompatActivity implements TabYesterday.OnF
             return;
         }
 
-        int offset = (mRecyclerViewItems.size() / mNativeAds.size()) + 1;
+        /*int offset = (mRecyclerViewItems.size() / mNativeAds.size()) + 1;
         int index = 0;
         for (UnifiedNativeAd ad : mNativeAds) {
             //Comment this to close the native Ads
-            mRecyclerViewItems.add(index, ad);
+            //mRecyclerViewItems.add(index, ad);
             index = index + 2;
-        }
+        }*/
     }
 
 

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bettingapp.Adapters.Match_adapter;
 import com.example.bettingapp.Moduls.match;
 import com.example.bettingapp.R;
+import com.example.bettingapp.util.FireStore;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 
 import java.io.Serializable;
@@ -86,7 +87,7 @@ public class TabYesterday extends Fragment implements Serializable {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        FireStore fireStore=FireStore.getInstence();
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_yesterday, container, false);
         RecyclerView mRecyclerView = rootView.findViewById(R.id.recyclerYesterday);
@@ -101,7 +102,7 @@ public class TabYesterday extends Fragment implements Serializable {
 
 
 ////        // Specify an adapter.
-        RecyclerView.Adapter<RecyclerView.ViewHolder> adapter = new Match_adapter(getActivity(), Yesterdaylist);
+        RecyclerView.Adapter<RecyclerView.ViewHolder> adapter = new Match_adapter(getActivity(), fireStore.mRecyclerViewItemsyesterday);
         mRecyclerView.setAdapter(adapter);
 
         adapter.notifyDataSetChanged();

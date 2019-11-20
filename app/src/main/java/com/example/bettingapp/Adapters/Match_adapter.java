@@ -49,30 +49,7 @@ public class Match_adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
 
-    private boolean CompareDate(Object item) {
 
-        match match = (match) item;
-
-
-        Date date = match.getTimestamp().toDate();
-
-
-        SimpleDateFormat dateFormatGmt = new SimpleDateFormat("yyyy-MMM-dd");
-        dateFormatGmt.setTimeZone(TimeZone.getTimeZone("GMT"));
-
-//Local time zone
-
-
-        String DateGMT = dateFormatGmt.format(new Date());
-        Toast.makeText(mContext, DateGMT, Toast.LENGTH_SHORT).show();
-
-        if (DateGMT.equals(date.toString())) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
 
     @Override
     public int getItemCount() {
@@ -126,16 +103,12 @@ public class Match_adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 final match menuItem = (match) Item;
 
 
-                MatchHolder.TeamA.setText(menuItem.getTeamA());
-                MatchHolder.TeamB.setText(menuItem.getTeamB());
+                MatchHolder.TeamA.setText(menuItem.getTeam1());
+                MatchHolder.TeamB.setText(menuItem.getTeam2());
                 MatchHolder.League.setText(menuItem.getLeague());
                 MatchHolder.cote.setText(menuItem.getCote());
                 MatchHolder.expectation.setText(menuItem.getExpectation());
 
-                String imagePath = menuItem.getImage();
-                Picasso.get()
-                        .load(imagePath)
-                        .into(MatchHolder.image);
 
 
         }
