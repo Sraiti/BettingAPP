@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FireStore {
+
+    public boolean isloadData=false;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     public static FireStore Instence;
     public static FireStore getInstence(){
@@ -39,7 +41,9 @@ public class FireStore {
                                 Log.d("TAG", document.getId() + " => " + document.getData());
                                 mRecyclerViewItemsToday.add(document.toObject(match.class));
                             }
+                            isloadData=true;
                         } else {
+
                             Log.d("TAG", "Error getting documents: ", task.getException());
                         }
                     }

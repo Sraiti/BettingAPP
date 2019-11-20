@@ -20,6 +20,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.bettingapp.AdsManager.ads_manager;
 import com.example.bettingapp.Moduls.match;
 import com.example.bettingapp.R;
+import com.example.bettingapp.util.FireStore;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
@@ -54,6 +55,8 @@ public class Main2Activity extends AppCompatActivity implements TabYesterday.OnF
     private LinearLayout mAdView;
     private ads_manager manager;
 
+    private FireStore fireStoreManager;
+
 
 
     @Override
@@ -65,6 +68,7 @@ public class Main2Activity extends AppCompatActivity implements TabYesterday.OnF
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
+        fireStoreManager=FireStore.getInstence();
         mAdView = findViewById(R.id.adView);
         manager = ads_manager.getInstance();
         manager.load_admob_banner(this);
@@ -114,6 +118,7 @@ public class Main2Activity extends AppCompatActivity implements TabYesterday.OnF
             }
         });
         loadNativeAds();
+
 
     }
 
@@ -190,13 +195,13 @@ public class Main2Activity extends AppCompatActivity implements TabYesterday.OnF
             return;
         }
 
-        /*int offset = (mRecyclerViewItems.size() / mNativeAds.size()) + 1;
+        int offset = (fireStoreManager.mRecyclerViewItemsToday.size() / mNativeAds.size()) + 1;
         int index = 0;
         for (UnifiedNativeAd ad : mNativeAds) {
             //Comment this to close the native Ads
             //mRecyclerViewItems.add(index, ad);
             index = index + 2;
-        }*/
+        }
     }
 
 

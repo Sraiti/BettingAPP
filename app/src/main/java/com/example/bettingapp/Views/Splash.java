@@ -35,7 +35,7 @@ public class Splash extends AppCompatActivity {
                     //Toast.makeText(Splash.this, "not", Toast.LENGTH_SHORT).show();
                 } else {
                     // do actions
-                    if (dataFireStore.isObjLoaded){
+                    if (dataFireStore.isObjLoaded&&fireStore.isloadData){
                         Intent i = new Intent(getApplicationContext(), Main2Activity.class);
                         startActivity(i);
                         finish();
