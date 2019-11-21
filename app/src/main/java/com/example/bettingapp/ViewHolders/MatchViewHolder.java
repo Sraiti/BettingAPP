@@ -1,15 +1,12 @@
 package com.example.bettingapp.ViewHolders;
 
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bettingapp.R;
-
-import java.util.Date;
 
 public class MatchViewHolder extends RecyclerView.ViewHolder {
 
@@ -21,7 +18,8 @@ public class MatchViewHolder extends RecyclerView.ViewHolder {
     public TextView cote;
     public TextView expectation;
     public View mView;
-    public MatchViewHolder (@NonNull View itemView) {
+
+    public MatchViewHolder(@NonNull View itemView) {
         super(itemView);
 
         team1 = itemView.findViewById(R.id.txt_teamA);

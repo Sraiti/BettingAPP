@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,13 +18,9 @@ import com.example.bettingapp.ViewHolders.UnifiedNativeAdViewHolder;
 import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
-import com.squareup.picasso.Picasso;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 public class Match_adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -35,11 +30,9 @@ public class Match_adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private static final int UNIFIED_NATIVE_AD_VIEW_TYPE = 1;
 
     private final Context mContext;
-
-    private List<Object> mRecyclerViewItems = new ArrayList<>();
-
     List<match> MatchList;
     List<UnifiedNativeAd> NativeList;
+    private List<Object> mRecyclerViewItems = new ArrayList<>();
 
     public Match_adapter(Context context, List<Object> recyclerViewItems) {
         this.mContext = context;
@@ -47,8 +40,6 @@ public class Match_adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         mRecyclerViewItems = recyclerViewItems;
     }
-
-
 
 
     @Override
@@ -109,13 +100,11 @@ public class Match_adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 MatchHolder.cote.setText(menuItem.getCote());
                 MatchHolder.expectation.setText(menuItem.getExpectation());
                 MatchHolder.time.setText(menuItem.getTime());
-                if (menuItem.getStatue()==0){
+                if (menuItem.getStatue() == 0) {
                     MatchHolder.cote.setBackgroundColor(mContext.getResources().getColor(R.color.flatui_pomegranate));
-                }else if (menuItem.getStatue()==1){
+                } else if (menuItem.getStatue() == 1) {
                     MatchHolder.cote.setBackgroundColor(mContext.getResources().getColor(R.color.color1));
                 }
-
-
 
 
         }

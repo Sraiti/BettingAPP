@@ -1,7 +1,10 @@
 package com.example.bettingapp.AdsManager;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
+import com.example.bettingapp.Moduls.module_firebase;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -10,11 +13,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class DataFireStore {
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public static DataFireStore Instence;
     public module_firebase ObjectFirebase;
     public boolean isObjLoaded = false;
-
-    public static DataFireStore Instence;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public static DataFireStore getInstance() {
         if (Instence == null)
@@ -30,11 +32,15 @@ public class DataFireStore {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 isObjLoaded = true;
                 ObjectFirebase = documentSnapshot.toObject(module_firebase.class);
+                Log.d("TAG", "FireBase Ads GETED");
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 isObjLoaded = true;
+                Log.d("TAG", "FireBase Ads FAILED GETTING");
+
             }
         });
     }

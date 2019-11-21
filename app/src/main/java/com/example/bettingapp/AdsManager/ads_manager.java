@@ -3,6 +3,7 @@ package com.example.bettingapp.AdsManager;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.example.bettingapp.Moduls.module_firebase;
 import com.example.bettingapp.util.ConsentSDK;
 import com.facebook.ads.Ad;
 import com.facebook.ads.AdError;
@@ -18,18 +19,17 @@ import com.google.android.gms.ads.InterstitialAd;
 public class ads_manager {
 
 
-    public AdView adView;
-    public InterstitialAd mInterstitialAd;
-    DataFireStore dataFireStore = DataFireStore.getInstance();
-
-    public com.facebook.ads.AdView fbadView;
-    public com.facebook.ads.InterstitialAd mInterstitialAdfb;
-
+    public static final int NUMBER_OF_ADS = 3;
     public static module_firebase obj;
     public static String id_native = null;
     public static boolean objloaded = false;
-    public int counterads = 0;
     public static ads_manager Instance;
+    public AdView adView;
+    public InterstitialAd mInterstitialAd;
+    public com.facebook.ads.AdView fbadView;
+    public com.facebook.ads.InterstitialAd mInterstitialAdfb;
+    public int counterads = 0;
+    DataFireStore dataFireStore = DataFireStore.getInstance();
 
     public static ads_manager getInstance() {
         if (Instance == null)

@@ -19,7 +19,9 @@
         <item
             android:id="@+id/gdpr"
             android:icon="@drawable/ic_verified_user_black_24dp"
-            android:title="@string/gdpr" />
+            android:title="@string/gdpr"
+            
+            />
     </group>
 
     <item android:title="Communicate">

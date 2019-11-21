@@ -1,4 +1,4 @@
-package com.example.bettingapp.AdsManager;
+package com.example.bettingapp.Moduls;
 
 public class module_firebase {
     public String admob_banner;
@@ -8,7 +8,8 @@ public class module_firebase {
     public String native_ads;
     public String native_adsFb;
 
-    public module_firebase(){}
+    public module_firebase() {
+    }
 
     public String getAdmob_banner() {
         return admob_banner;

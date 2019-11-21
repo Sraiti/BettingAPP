@@ -1,11 +1,6 @@
 package com.example.bettingapp.Moduls;
 
 
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-
 public class match {
 
     String team1;
@@ -24,7 +19,7 @@ public class match {
         team1 = teamA;
         team2 = teamB;
         League = league;
-        time = time;
+        this.time = time;
         this.cote = cote;
         this.expectation = expectation;
         Statue = statue;
@@ -35,60 +30,60 @@ public class match {
         return team1;
     }
 
-    public String getTeam2() {
-        return team2;
-    }
-
-    public String getLeague() {
-        return League;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public String getCote() {
-        return cote;
-    }
-
-    public String getExpectation() {
-        return expectation;
-    }
-
-    public int getStatue() {
-        return Statue;
-    }
-
-    public String getDay() {
-        return Day;
-    }
-
     public void setTeam1(String team1) {
         this.team1 = team1;
+    }
+
+    public String getTeam2() {
+        return team2;
     }
 
     public void setTeam2(String team2) {
         this.team2 = team2;
     }
 
+    public String getLeague() {
+        return League;
+    }
+
     public void setLeague(String league) {
         League = league;
+    }
+
+    public String getTime() {
+        return time;
     }
 
     public void setTime(String time) {
         this.time = time;
     }
 
+    public String getCote() {
+        return cote;
+    }
+
     public void setCote(String cote) {
         this.cote = cote;
+    }
+
+    public String getExpectation() {
+        return expectation;
     }
 
     public void setExpectation(String expectation) {
         this.expectation = expectation;
     }
 
+    public int getStatue() {
+        return Statue;
+    }
+
     public void setStatue(int statue) {
         Statue = statue;
+    }
+
+    public String getDay() {
+        return Day;
     }
 
     public void setDay(String day) {

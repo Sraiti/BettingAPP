@@ -22,8 +22,8 @@ import com.google.android.material.tabs.TabLayout;
 public class HomeFragment extends Fragment implements TabToday.OnFragmentInteractionListener,
         TabYesterday.OnFragmentInteractionListener {
 
-    private HomeViewModel homeViewModel;
     Context context;
+    private HomeViewModel homeViewModel;
     private ads_manager manager;
 
 

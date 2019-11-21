@@ -3,31 +3,20 @@ package com.example.bettingapp.Views;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bettingapp.Adapters.Match_adapter;
-import com.example.bettingapp.AdsManager.DataFireStore;
-import com.example.bettingapp.Moduls.match;
 import com.example.bettingapp.R;
 import com.example.bettingapp.util.FireStore;
-import com.google.android.gms.ads.formats.UnifiedNativeAd;
 
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.TimeZone;
 
 
 public class TabToday extends Fragment implements Serializable {
@@ -43,9 +32,8 @@ public class TabToday extends Fragment implements Serializable {
     private OnFragmentInteractionListener mListener;
 
 
-    List<Object> Todaylist = new ArrayList<>();
-
     private TextView wait;
+
     public TabToday() {
         // Required empty public constructor
     }
@@ -76,10 +64,6 @@ public class TabToday extends Fragment implements Serializable {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        Main2Activity activity = (Main2Activity) getActivity();
-        Todaylist = activity.getRecyclerViewItems();
-
-
 
     }
 
@@ -87,7 +71,7 @@ public class TabToday extends Fragment implements Serializable {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        FireStore fireStore=FireStore.getInstence();
+        FireStore fireStore = FireStore.getInstence();
 
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_today, container, false);
