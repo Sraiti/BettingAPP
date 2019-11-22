@@ -17,6 +17,7 @@ import com.example.bettingapp.AdsManager.ads_manager;
 import com.example.bettingapp.R;
 import com.example.bettingapp.Views.TabToday;
 import com.example.bettingapp.Views.TabYesterday;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.material.tabs.TabLayout;
 
 public class HomeFragment extends Fragment implements TabToday.OnFragmentInteractionListener,
@@ -34,6 +35,7 @@ public class HomeFragment extends Fragment implements TabToday.OnFragmentInterac
         context = getActivity();
         manager = ads_manager.getInstance();
         manager.loadIntersAdmob(context);
+        manager.loadFbInterstitial(context);
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         TabLayout tabLayout = root.findViewById(R.id.tablayout);
@@ -51,6 +53,13 @@ public class HomeFragment extends Fragment implements TabToday.OnFragmentInterac
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 manager.showadmobInter(context);
+                manager.mInterstitialAd.setAdListener(new AdListener(){
+                    @Override
+                    public void onAdFailedToLoad(int i) {
+                        super.onAdFailedToLoad(i);
+                        manager.showFbInterstitial(context);
+                    }
+                });
 
             }
 

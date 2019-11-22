@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bettingapp.AdsManager.DataFireStore;
+import com.example.bettingapp.BuildConfig;
 import com.example.bettingapp.R;
 import com.example.bettingapp.util.ConsentSDK;
 import com.example.bettingapp.util.FireStore;
@@ -17,6 +19,7 @@ public class Splash extends AppCompatActivity {
     DataFireStore dataFireStore;
     FireStore fireStore;
     ConsentSDK consentSDK;
+    private TextView Version;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,8 @@ public class Splash extends AppCompatActivity {
             }
         });
 
+        Version=findViewById(R.id.versionName);
+        Version.setText("Version "+BuildConfig.VERSION_NAME);
         dataFireStore = DataFireStore.getInstance();
         fireStore = FireStore.getInstence();
 

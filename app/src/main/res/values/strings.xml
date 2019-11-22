@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BTTS 2019/2020</string>
+    <string name="app_name">BETTING TIPS</string>
     <string name="nav_header_title">Sure Betting Tips</string>
     <string name="nav_header_subtitle">specialones@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
@@ -7,7 +7,7 @@
 
     <string name="ad_unit_id">ca-app-pub-3940256099942544/8135179316</string>
 
-
+    <string name="facebook_app_id" translatable="false">465018920810426</string>
     <string name="ad_attribution" translatable="false">Ad</string>
     <string name="gdbr">gdpr</string>
     <string name="url_privacy">https://www.gdprprivacynotice.com/live.php?token=B3lA6OADYaUJLUGAs2VVS4IsydGUsgPX</string>
@@ -21,4 +21,5 @@
     <string name="contact">Contact Us</string>
     <string name="sendEmail">Send Email</string>
     <string name="Emailrecerver">specialonse@gmail.com</string>
+    <string name="dialog_close_msg">ARE YOU SURE YOU WANT TO QUITE</string>
 </resources>

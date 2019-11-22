@@ -14,4 +14,38 @@
     <color name="color6">#F0A100</color>
     <color name="white">#fff</color>
 
+    <color name="facebook_color">#3b5998</color>
+
+    <color name="flatui_turquoise">#1abc9c</color>
+    <color name="flatui_green_sea">#5ad9c0</color>
+
+    <color name="flatui_nephritis">#27ae60</color>
+    <color name="flatui_peter_river">#3498DB</color>
+    <color name="flatui_belize_hole">#6f9cb9</color>
+    <color name="flatui_amethyst">#b09ab9</color>
+    <color name="flatui_wisteria">#8e44ad</color>
+
+    <color name="flat2">#34495e</color>
+
+    <color name="flatui_sun_flower">#eaed13</color>
+    <color name="flatui_orange">#FAC97C</color>
+    <color name="flatui_carrot">#d18eee</color>
+    <color name="flatui_pumpkin">#d35400</color>
+    <color name="flatui_alizarin">#e74c3c</color>
+
+    <color name="flatui_silver">#bdc3c7</color>
+    <color name="flatui_concrete">#95A5A6</color>
+    <color name="flatui_asbestos">#69cc67</color>
+
+    <color name="color2">#15AB88</color>
+    <color name="color3">#FBDB5D</color>
+
+    <color name="color5">#f0a698</color>
+    <color name="green">#00E676</color>
+    <color name="colorb">#F53B57</color>
+    <color name="colorc">#ffa801</color>
+    <color name="colord">#00E676</color>
+    <color name="backgroun">#3498DB</color>
+    <color name="back2">#2980B9</color>
 </resources>
+
