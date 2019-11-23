@@ -135,7 +135,7 @@ public class ads_manager {
             @Override
             public void onError(Ad ad, AdError adError) {
                 // Ad error callback
-                Toast.makeText(context, adError.getErrorMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, adError.getErrorMessage() + " It's a me ", Toast.LENGTH_SHORT).show();
             }
 
             @Override

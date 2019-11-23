@@ -85,8 +85,7 @@ public class TabYesterday extends Fragment implements Serializable {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(layoutManager);
 
-
-////        // Specify an adapter.
+        // Specify an adapter.
         RecyclerView.Adapter<RecyclerView.ViewHolder> adapter = new Match_adapter(getActivity(), fireStore.mRecyclerViewItemsyesterday);
         mRecyclerView.setAdapter(adapter);
 
@@ -132,33 +131,7 @@ public class TabYesterday extends Fragment implements Serializable {
 
     }
 
-    public Date getGMTtime() {
-//        final Date currentTime = new Date();
-//
-//         final SimpleDateFormat sdf =
-//                new SimpleDateFormat("d mon yyyy hh:mm:ss GMT");
-//
-//        // Give it to me in GMT time.
-//        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-//        return sdf.format(currentTime);
 
-
-        SimpleDateFormat dateFormatGmt = new SimpleDateFormat("yyyy-MMM-dd");
-        dateFormatGmt.setTimeZone(TimeZone.getTimeZone("GMT"));
-
-//Local time zone
-        SimpleDateFormat dateFormatLocal = new SimpleDateFormat("yyyy-MMM-dd");
-
-//Time in GMT
-        try {
-            return dateFormatLocal.parse(dateFormatGmt.format(new Date()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-
-    }
 
 
     /**
