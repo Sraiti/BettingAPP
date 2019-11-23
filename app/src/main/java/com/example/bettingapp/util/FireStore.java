@@ -96,7 +96,14 @@ public class FireStore {
 
 
     private void loadNativeAds(final Context context, final List<Object> mRecyclerViewItemsToday) {
-        AdLoader.Builder builder = new AdLoader.Builder(context, context.getString(R.string.ad_unit_id));
+        String nativeid;
+        try {
+            nativeid = dataFireStore.ObjectFirebase.native_ads;
+        } catch (Exception ex) {
+            nativeid = context.getString(R.string.ad_unit_id);
+        }
+
+        AdLoader.Builder builder = new AdLoader.Builder(context, nativeid);
         adLoader = builder.forUnifiedNativeAd(
                 new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
                     @Override
