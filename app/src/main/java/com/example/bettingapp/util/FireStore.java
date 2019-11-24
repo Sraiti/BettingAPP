@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import com.example.bettingapp.AdsManager.DataFireStore;
 import com.example.bettingapp.Moduls.match;
 import com.example.bettingapp.R;
+import com.example.bettingapp.Views.TabToday;
+import com.example.bettingapp.Views.TabYesterday;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
@@ -20,6 +22,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.opencensus.tags.Tag;
 
 public class FireStore {
 
@@ -53,7 +57,6 @@ public class FireStore {
                                     Log.d("TAG", document.getId() + " => " + document.getData());
                                     mRecyclerViewItemsToday.add(document.toObject(match.class));
                                     Log.d("TAG", "TODAY DATA  GETED");
-
                                 }
                                 isloadData = true;
                             } else {
@@ -62,13 +65,7 @@ public class FireStore {
                             }
                         }
                     });
-            loadNativeAds(context, mRecyclerViewItemsToday);
-        }
-        return mRecyclerViewItemsToday;
-    }
 
-    public List<Object> LoadDatayesterday(Context context) {
-        if (!isloadData) {
             mRecyclerViewItemsyesterday = new ArrayList<>();
             db.collection("match")
                     .whereEqualTo("Day", "y")
@@ -89,13 +86,21 @@ public class FireStore {
                         }
                     });
 
-            loadNativeAds(context, mRecyclerViewItemsyesterday);
+            loadNativeAds(context);
+        }
+        return mRecyclerViewItemsToday;
+    }
+
+    public List<Object> LoadDatayesterday(Context context) {
+        if (!isloadData) {
+
+          //  loadNativeAds(context, false);
         }
         return mRecyclerViewItemsyesterday;
     }
 
 
-    private void loadNativeAds(final Context context, final List<Object> mRecyclerViewItemsToday) {
+    private void loadNativeAds(final Context context) {
         String nativeid;
         try {
             nativeid = dataFireStore.ObjectFirebase.native_ads;
@@ -112,7 +117,7 @@ public class FireStore {
 //                        // and if so, insert the ads into the list.
                         mNativeAds.add(unifiedNativeAd);
                         if (!adLoader.isLoading()) {
-                            insertAdsInMenuItems(mRecyclerViewItemsToday, context);
+                            insertAdsInMenuItems();
                         }
                     }
                 }).withAdListener(
@@ -124,7 +129,7 @@ public class FireStore {
                         Log.e("MainActivity", "The previous native ad failed to load. Attempting to"
                                 + " load another.");
                         if (!adLoader.isLoading()) {
-                            insertAdsInMenuItems(mRecyclerViewItemsToday, context);
+                            insertAdsInMenuItems();
                         }
                     }
                 }).build();
@@ -133,25 +138,37 @@ public class FireStore {
         adLoader.loadAds(new AdRequest.Builder().build(), NUMBER_OF_ADS);
     }
 
-    private void insertAdsInMenuItems(List<Object> mRecyclerViewItems, Context context) {
+    private void insertAdsInMenuItems() {
         if (mNativeAds.size() <= 0) {
             return;
         }
-        int index = 0;
-        for (UnifiedNativeAd ad : mNativeAds) {
-            try { //Comment this to close the native Ads
-                if (index != 0) {
-                    mRecyclerViewItems.add(index, ad);
-                    Log.d("TAG", "NATIVE ADDED");
+        int index = 3;
+
+
+            for (UnifiedNativeAd ad : mNativeAds) {
+                //Comment this to close the native Ads
+                if (index > mRecyclerViewItemsToday.size()) {
+                    break;
                 }
+                mRecyclerViewItemsToday.add(index, ad);
+                Log.d("TAG", "Today insertAdsInMenuItems|index is :"+index);
+                TabToday.adapter.notifyItemInserted(index);
                 index = index + 3;
-            } catch (IndexOutOfBoundsException ex) {
+            }
+      index=3;
+            for (UnifiedNativeAd ad : mNativeAds) {
+                //Comment this to close the native Ads
+                if (index > mRecyclerViewItemsyesterday.size()) {
+                    break;
+                }
+                mRecyclerViewItemsyesterday.add(index, ad);
+                TabYesterday.adapter.notifyItemInserted(index);
+                Log.d("TAG", "Yesterday insertAdsInMenuItems|index is :"+index);
 
-                LoadDataToday(context);
-                LoadDatayesterday(context);
-
+                index = index + 3;
             }
 
-        }
-    }
+
+     }
 }
+

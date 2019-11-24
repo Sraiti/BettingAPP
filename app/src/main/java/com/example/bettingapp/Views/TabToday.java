@@ -24,7 +24,7 @@ public class TabToday extends Fragment implements Serializable {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    public static RecyclerView.Adapter<RecyclerView.ViewHolder> adapter;
 
     private String mParam1;
     private String mParam2;
@@ -87,10 +87,10 @@ public class TabToday extends Fragment implements Serializable {
         mRecyclerView.setLayoutManager(layoutManager);
 
         // Specify an adapter.
-        RecyclerView.Adapter<RecyclerView.ViewHolder> adapter = new Match_adapter(getActivity(), fireStore.mRecyclerViewItemsToday);
+        adapter = new Match_adapter(getActivity(), fireStore.mRecyclerViewItemsToday);
         mRecyclerView.setAdapter(adapter);
-
         adapter.notifyDataSetChanged();
+
         return rootView;
     }
 

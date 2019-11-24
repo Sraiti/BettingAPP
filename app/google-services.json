@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "154204067115",
+    "firebase_url": "https://bettingtipsapp-652ec.firebaseio.com",
+    "project_id": "bettingtipsapp-652ec",
+    "storage_bucket": "bettingtipsapp-652ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:154204067115:android:ec8221172e377f4f2c616e",
+        "android_client_info": {
+          "package_name": "com.bettingapp.tips2020"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "154204067115-n8uc5t6qnam0p045ro9rldamg3adtcgn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bettingapp.tips2020",
+            "certificate_hash": "cbf35c8a3ffadef295349df48c278356acb34f57"
+          }
+        },
+        {
+          "client_id": "154204067115-jh8qicpnaj50gpqj0effkmcl3q3otmqp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKdfbYdkFhRM0hEorRl3FN3lZ8YcxeiBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "154204067115-jh8qicpnaj50gpqj0effkmcl3q3otmqp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -33,6 +33,7 @@ public class TabYesterday extends Fragment implements Serializable {
     private String mParam1;
     private String mParam2;
     private OnFragmentInteractionListener mListener;
+    public static   RecyclerView.Adapter<RecyclerView.ViewHolder> adapter;
 
     public TabYesterday() {
         // Required empty public constructor
@@ -86,10 +87,10 @@ public class TabYesterday extends Fragment implements Serializable {
         mRecyclerView.setLayoutManager(layoutManager);
 
         // Specify an adapter.
-        RecyclerView.Adapter<RecyclerView.ViewHolder> adapter = new Match_adapter(getActivity(), fireStore.mRecyclerViewItemsyesterday);
+         adapter = new Match_adapter(getActivity(), fireStore.mRecyclerViewItemsyesterday);
         mRecyclerView.setAdapter(adapter);
-
         adapter.notifyDataSetChanged();
+
         return rootView;
     }
 

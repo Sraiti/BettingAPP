@@ -30,7 +30,7 @@ public class fragment_adapter extends FragmentStatePagerAdapter {
             case 1:
                 return tabYesterday;
             default:
-                return tabToday;
+                return null;
         }
 
     }
