@@ -91,6 +91,7 @@ public class ads_manager {
 
 
     public void loadIntersAdmob(Context context) {
+
         if (mInterstitialAd == null) {
             mInterstitialAd = new InterstitialAd(context);
             mInterstitialAd.setAdUnitId(dataFireStore.ObjectFirebase.getAdmob_interstitial());
@@ -108,6 +109,7 @@ public class ads_manager {
     }
 
     public com.facebook.ads.InterstitialAd loadFbInterstitial(final Context context) {
+
         if (mInterstitialAdfb == null) {
             try {
                 mInterstitialAdfb = new com.facebook.ads.InterstitialAd(context, dataFireStore.ObjectFirebase.fb_interstitial);
@@ -135,7 +137,7 @@ public class ads_manager {
             @Override
             public void onError(Ad ad, AdError adError) {
                 // Ad error callback
-                Toast.makeText(context, adError.getErrorMessage() + " It's a me ", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, adError.getErrorMessage(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
