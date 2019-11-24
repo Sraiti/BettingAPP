@@ -43,7 +43,7 @@ public class FireStore {
         return Instence;
     }
 
-    public List<Object> LoadDataToday(Context context) {
+    public void LoadDataToday(Context context) {
         if (!isloadData) {
             mRecyclerViewItemsToday = new ArrayList<>();
             db.collection("match")
@@ -88,16 +88,8 @@ public class FireStore {
 
             loadNativeAds(context);
         }
-        return mRecyclerViewItemsToday;
     }
 
-    public List<Object> LoadDatayesterday(Context context) {
-        if (!isloadData) {
-
-          //  loadNativeAds(context, false);
-        }
-        return mRecyclerViewItemsyesterday;
-    }
 
 
     private void loadNativeAds(final Context context) {
