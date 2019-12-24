@@ -163,5 +163,8 @@ public class Match_adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         adView.setNativeAd(nativeAd);
     }
 
+    
+    
+    
 
 }

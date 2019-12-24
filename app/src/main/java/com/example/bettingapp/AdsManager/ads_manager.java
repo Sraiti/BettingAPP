@@ -1,35 +1,27 @@
 package com.example.bettingapp.AdsManager;
 
 import android.content.Context;
-import android.widget.Toast;
+import android.util.Log;
 
-import com.example.bettingapp.Moduls.module_firebase;
-import com.example.bettingapp.util.ConsentSDK;
+import com.example.bettingapp.R;
 import com.facebook.ads.Ad;
 import com.facebook.ads.AdError;
-import com.facebook.ads.AdListener;
 import com.facebook.ads.AdSettings;
 import com.facebook.ads.InterstitialAdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+import com.facebook.ads.NativeAd;
+import com.facebook.ads.NativeAdListener;
+
 
 
 public class ads_manager {
-
-
-    public static final int NUMBER_OF_ADS = 3;
-    public static module_firebase obj;
-    public static String id_native = null;
-    public static boolean objloaded = false;
     public static ads_manager Instance;
-    public AdView adView;
-    public InterstitialAd mInterstitialAd;
+    private final String TAG = "mytagads";
     public com.facebook.ads.AdView fbadView;
     public com.facebook.ads.InterstitialAd mInterstitialAdfb;
+
+
     public int counterads = 0;
-    DataFireStore dataFireStore = DataFireStore.getInstance();
+    private NativeAd nativeAd;
 
     public static ads_manager getInstance() {
         if (Instance == null)
@@ -38,51 +30,16 @@ public class ads_manager {
     }
 
 
-    public AdView load_admob_banner(Context context) {
-        try {
-            adView = new AdView(context);
-            adView.setAdSize(AdSize.SMART_BANNER);
-            adView.setAdUnitId(dataFireStore.ObjectFirebase.admob_banner);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            adView.loadAd(adRequest);
-        } catch (Exception e) {
-        }
-
-        return adView;
-
-    }
-
-
     public com.facebook.ads.AdView fbLoadBanner(final Context context) {
 
         try {
             fbadView = new com.facebook.ads.AdView(context,
-                    dataFireStore.ObjectFirebase.getFb_banner(),
+                    context.getResources().getString(R.string.facebook_banner_id),
                     com.facebook.ads.AdSize.BANNER_HEIGHT_50);
-            AdSettings.addTestDevice("2B3D0A13A0A6EF98B4E2A18C2984F989");
+            AdSettings.addTestDevice("e2317541-f503-4963-99da-62659eeb36cb");
             fbadView.loadAd();
 
-            fbadView.setAdListener(new AdListener() {
-                @Override
-                public void onError(Ad ad, AdError adError) {
 
-                }
-
-                @Override
-                public void onAdLoaded(Ad ad) {
-
-                }
-
-                @Override
-                public void onAdClicked(Ad ad) {
-
-                }
-
-                @Override
-                public void onLoggingImpression(Ad ad) {
-
-                }
-            });
         } catch (Exception e) {
         }
 
@@ -90,30 +47,11 @@ public class ads_manager {
     }
 
 
-    public void loadIntersAdmob(Context context) {
-
-        if (mInterstitialAd == null) {
-            mInterstitialAd = new InterstitialAd(context);
-            mInterstitialAd.setAdUnitId(dataFireStore.ObjectFirebase.getAdmob_interstitial());
-        }
-        mInterstitialAd.loadAd(ConsentSDK.getAdRequest(context));
-
-    }
-
-    public void showadmobInter(Context context) {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            mInterstitialAd.loadAd(ConsentSDK.getAdRequest(context));
-        }
-    }
-
     public com.facebook.ads.InterstitialAd loadFbInterstitial(final Context context) {
-
         if (mInterstitialAdfb == null) {
             try {
-                mInterstitialAdfb = new com.facebook.ads.InterstitialAd(context, dataFireStore.ObjectFirebase.fb_interstitial);
-                AdSettings.addTestDevice("2B3D0A13A0A6EF98B4E2A18C2984F989");
+                mInterstitialAdfb = new com.facebook.ads.InterstitialAd(context, context.getResources().getString(R.string.facebook_interstitial));
+                AdSettings.addTestDevice("e2317541-f503-4963-99da-62659eeb36cb");
                 mInterstitialAdfb.loadAd();
             } catch (Exception e) {
                 return mInterstitialAdfb;
@@ -121,49 +59,65 @@ public class ads_manager {
 
         } else if (!mInterstitialAdfb.isAdLoaded())
             mInterstitialAdfb.loadAd();
-        mInterstitialAdfb.setAdListener(new InterstitialAdListener() {
-            @Override
-            public void onInterstitialDisplayed(Ad ad) {
-                // Interstitial ad displayed callback
-
-            }
-
-            @Override
-            public void onInterstitialDismissed(Ad ad) {
-                // Interstitial dismissed callback
-
-            }
-
-            @Override
-            public void onError(Ad ad, AdError adError) {
-                // Ad error callback
-                //Toast.makeText(context, adError.getErrorMessage(), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAdLoaded(Ad ad) {
-
-            }
-
-            @Override
-            public void onAdClicked(Ad ad) {
-
-            }
-
-            @Override
-            public void onLoggingImpression(Ad ad) {
-
-            }
-        });
+        
         return mInterstitialAdfb;
 
     }
 
     public void showFbInterstitial(Context context) {
-        if (mInterstitialAdfb.isAdLoaded())
-            mInterstitialAdfb.show();
-        else loadFbInterstitial(context);
+        try {
+            if (mInterstitialAdfb.isAdLoaded())
+                mInterstitialAdfb.show();
+            else
+                loadFbInterstitial(context);
+        } catch (Exception ex) {
+
+        }
+
     }
 
+    public void LoadNative(Context context) {
+        nativeAd = new NativeAd(context, context.getResources().getString(R.string.fb_native));
+
+        nativeAd.setAdListener(new NativeAdListener() {
+            @Override
+            public void onMediaDownloaded(Ad ad) {
+                // Native ad finished downloading all assets
+                Log.e(TAG, "Native ad finished downloading all assets.");
+            }
+
+            @Override
+            public void onError(Ad ad, AdError adError) {
+                // Native ad failed to load
+                Log.e(TAG, "Native ad failed to load: " + adError.getErrorMessage());
+            }
+
+            @Override
+            public void onAdLoaded(Ad ad) {
+                // Native ad is loaded and ready to be displayed
+                Log.d(TAG, "Native ad is loaded and ready to be displayed!");
+            }
+
+            @Override
+            public void onAdClicked(Ad ad) {
+                // Native ad clicked
+                Log.d(TAG, "Native ad clicked!");
+            }
+
+            @Override
+            public void onLoggingImpression(Ad ad) {
+                // Native ad impression
+                Log.d(TAG, "Native ad impression logged!");
+            }
+        });
+
+        // Request an ad
+        nativeAd.loadAd();
+
+    }
+
+    public NativeAd showNative() {
+        return nativeAd;
+    }
 
 }

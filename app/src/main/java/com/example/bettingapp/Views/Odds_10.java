@@ -19,7 +19,7 @@ import com.example.bettingapp.util.FireStore;
 import java.io.Serializable;
 
 
-public class TabToday extends Fragment implements Serializable {
+public class Odds_10 extends Fragment implements Serializable {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -34,7 +34,7 @@ public class TabToday extends Fragment implements Serializable {
 
     private TextView wait;
 
-    public TabToday() {
+    public Odds_10() {
         // Required empty public constructor
     }
 
@@ -47,8 +47,8 @@ public class TabToday extends Fragment implements Serializable {
      * @return A new instance of fragment tab_new.
      */
     // TODO: Rename and change types and number of parameters
-    public static TabToday newInstance(String param1, String param2) {
-        TabToday fragment = new TabToday();
+    public static Odds_10 newInstance(String param1, String param2) {
+        Odds_10 fragment = new Odds_10();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -74,8 +74,8 @@ public class TabToday extends Fragment implements Serializable {
         FireStore fireStore = FireStore.getInstence();
 
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_today, container, false);
-        RecyclerView mRecyclerView = rootView.findViewById(R.id.recyclerToday);
+        View rootView = inflater.inflate(R.layout.fragment_oddsdix, container, false);
+        RecyclerView mRecyclerView = rootView.findViewById(R.id.recyclerToday10);
 
 
         // Use this setting to improve performance if you know that changes
@@ -87,7 +87,7 @@ public class TabToday extends Fragment implements Serializable {
         mRecyclerView.setLayoutManager(layoutManager);
 
         // Specify an adapter.
-        adapter = new Match_adapter(getActivity(), fireStore.mRecyclerViewItemsToday);
+        adapter = new Match_adapter(getActivity(), fireStore.mRecyclerViewItems10);
         mRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 

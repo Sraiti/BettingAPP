@@ -15,12 +15,12 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.bettingapp.Adapters.fragment_adapter;
 import com.example.bettingapp.AdsManager.ads_manager;
 import com.example.bettingapp.R;
-import com.example.bettingapp.Views.TabToday;
+import com.example.bettingapp.Views.Odds_5;
 import com.example.bettingapp.Views.TabYesterday;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.material.tabs.TabLayout;
 
-public class HomeFragment extends Fragment implements TabToday.OnFragmentInteractionListener,
+public class HomeFragment extends Fragment implements Odds_5.OnFragmentInteractionListener,
         TabYesterday.OnFragmentInteractionListener {
 
     Context context;
@@ -34,13 +34,13 @@ public class HomeFragment extends Fragment implements TabToday.OnFragmentInterac
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         context = getActivity();
         manager = ads_manager.getInstance();
-        manager.loadIntersAdmob(context);
         manager.loadFbInterstitial(context);
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         TabLayout tabLayout = root.findViewById(R.id.tablayout);
-        tabLayout.addTab(tabLayout.newTab().setText("Today"));
-        tabLayout.addTab(tabLayout.newTab().setText("yesterday"));
+        tabLayout.addTab(tabLayout.newTab().setText("10+Odds"));
+        tabLayout.addTab(tabLayout.newTab().setText("5+Odds"));
+        tabLayout.addTab(tabLayout.newTab().setText("Old Tips"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = root.findViewById(R.id.viewpagerToday);
@@ -52,14 +52,7 @@ public class HomeFragment extends Fragment implements TabToday.OnFragmentInterac
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                manager.showadmobInter(context);
-                manager.mInterstitialAd.setAdListener(new AdListener(){
-                    @Override
-                    public void onAdFailedToLoad(int i) {
-                        super.onAdFailedToLoad(i);
-                        manager.showFbInterstitial(context);
-                    }
-                });
+                manager.showFbInterstitial(context);
 
             }
 

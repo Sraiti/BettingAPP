@@ -10,12 +10,12 @@ public class match {
     String cote;
     String expectation;
     int Statue;
-    String Day;
+  
 
     public match() {
     }
 
-    public match(String teamA, String teamB, String league, String time, String cote, String expectation, int statue, String day) {
+    public match(String teamA, String teamB, String league, String time, String cote, String expectation, int statue) {
         team1 = teamA;
         team2 = teamB;
         League = league;
@@ -23,7 +23,7 @@ public class match {
         this.cote = cote;
         this.expectation = expectation;
         Statue = statue;
-        Day = day;
+       
     }
 
     public String getTeam1() {
@@ -82,11 +82,5 @@ public class match {
         Statue = statue;
     }
 
-    public String getDay() {
-        return Day;
-    }
-
-    public void setDay(String day) {
-        Day = day;
-    }
+  
 }

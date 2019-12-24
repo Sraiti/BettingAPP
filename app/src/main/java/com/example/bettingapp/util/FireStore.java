@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import com.example.bettingapp.AdsManager.DataFireStore;
 import com.example.bettingapp.Moduls.match;
 import com.example.bettingapp.R;
-import com.example.bettingapp.Views.TabToday;
+import com.example.bettingapp.Views.Odds_5;
 import com.example.bettingapp.Views.TabYesterday;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
@@ -23,14 +23,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.opencensus.tags.Tag;
-
 public class FireStore {
 
     public static final int NUMBER_OF_ADS = 3;
     public static FireStore Instence;
     public boolean isloadData = false;
-    public List<Object> mRecyclerViewItemsToday;
+    public List<Object> mRecyclerViewItems5;
+public List<Object> mRecyclerViewItems10;
     public List<Object> mRecyclerViewItemsyesterday;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DataFireStore dataFireStore = DataFireStore.getInstance();
@@ -45,9 +44,9 @@ public class FireStore {
 
     public void LoadDataToday(Context context) {
         if (!isloadData) {
-            mRecyclerViewItemsToday = new ArrayList<>();
+            mRecyclerViewItems5 = new ArrayList<>();
             db.collection("match")
-                    .whereEqualTo("Day", "t")
+                    .whereEqualTo("Papier", 5)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
@@ -55,7 +54,7 @@ public class FireStore {
                             if (task.isSuccessful()) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Log.d("TAG", document.getId() + " => " + document.getData());
-                                    mRecyclerViewItemsToday.add(document.toObject(match.class));
+                                    mRecyclerViewItems5.add(document.toObject(match.class));
                                     Log.d("TAG", "TODAY DATA  GETED");
                                 }
                                 isloadData = true;
@@ -65,10 +64,28 @@ public class FireStore {
                             }
                         }
                     });
-
+            mRecyclerViewItems10 = new ArrayList<>();
+            db.collection("match")
+                    .whereEqualTo("Papier", 10)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d("TAG", document.getId() + " => " + document.getData());
+                                    mRecyclerViewItems10.add(document.toObject(match.class));
+                                    Log.d("TAG", "Yesterday DATA  GETED");
+                                    isloadData = true;
+                                }
+                            } else {
+                                Log.d("TAG", "Error getting documents: ", task.getException());
+                            }
+                        }
+                    });
             mRecyclerViewItemsyesterday = new ArrayList<>();
             db.collection("match")
-                    .whereEqualTo("Day", "y")
+                    .whereEqualTo("Papier", 0)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
@@ -86,7 +103,7 @@ public class FireStore {
                         }
                     });
 
-            loadNativeAds(context);
+           // loadNativeAds(context);
         }
     }
 
@@ -109,7 +126,7 @@ public class FireStore {
 //                        // and if so, insert the ads into the list.
                         mNativeAds.add(unifiedNativeAd);
                         if (!adLoader.isLoading()) {
-                            insertAdsInMenuItems();
+                            //insertAdsInMenuItems();
                         }
                     }
                 }).withAdListener(
@@ -121,7 +138,7 @@ public class FireStore {
                         Log.e("MainActivity", "The previous native ad failed to load. Attempting to"
                                 + " load another.");
                         if (!adLoader.isLoading()) {
-                            insertAdsInMenuItems();
+                            //insertAdsInMenuItems();
                         }
                     }
                 }).build();
@@ -139,12 +156,12 @@ public class FireStore {
 
             for (UnifiedNativeAd ad : mNativeAds) {
                 //Comment this to close the native Ads
-                if (index > mRecyclerViewItemsToday.size()) {
+                if (index > mRecyclerViewItems5.size()) {
                     break;
                 }
-                mRecyclerViewItemsToday.add(index, ad);
+                mRecyclerViewItems5.add(index, ad);
                 Log.d("TAG", "Today insertAdsInMenuItems|index is :"+index);
-                TabToday.adapter.notifyItemInserted(index);
+                Odds_5.adapter.notifyItemInserted(index);
                 index = index + 3;
             }
       index=3;

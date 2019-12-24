@@ -5,9 +5,13 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="ad_unit_id">ca-app-pub-3940256099942544/8135179316</string>
+    <string name="ad_unit_id">ca-app-pub-6560477533466455/1130446163</string>
 
-    <string name="facebook_app_id" translatable="false">465018920810426</string>
+    <string name="facebook_application_id" translatable="false">465018920810426</string>
+    <string name="facebook_banner_id">465018920810426_465041527474832</string>
+    <string name="facebook_interstitial">465018920810426_465041194141532</string>
+    <string name="fb_native">465018920810426_465021800810138</string>
+
     <string name="ad_attribution" translatable="false">Ad</string>
     <string name="gdbr">gdpr</string>
     <string name="url_privacy">https://www.gdprprivacynotice.com/live.php?token=B3lA6OADYaUJLUGAs2VVS4IsydGUsgPX</string>

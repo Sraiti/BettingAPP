@@ -45,7 +45,7 @@ public class Splash extends AppCompatActivity {
 
         dataFireStore.loadObject();
         fireStore.LoadDataToday(this);
-        fireStore.LoadDatayesterday(this);
+       
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

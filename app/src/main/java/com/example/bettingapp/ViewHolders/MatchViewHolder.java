@@ -28,7 +28,7 @@ public class MatchViewHolder extends RecyclerView.ViewHolder {
         time = itemView.findViewById(R.id.txt_time);
         expectation = itemView.findViewById(R.id.txt_expectation);
         cote = itemView.findViewById(R.id.txt_cote);
-
+        
 
         mView = itemView;
 
