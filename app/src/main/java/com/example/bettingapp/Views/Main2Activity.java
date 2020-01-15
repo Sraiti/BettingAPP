@@ -75,10 +75,6 @@ public class Main2Activity extends AppCompatActivity implements TabYesterday.OnF
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main2);
-		
-		android_id = Secure.getString(this.getContentResolver(),
-				Secure.ANDROID_ID);
-		Toast.makeText(this, android_id, Toast.LENGTH_LONG).show();
 		MobileAds.initialize(this, new OnInitializationCompleteListener() {
 			@Override
 			public void onInitializationComplete(InitializationStatus initializationStatus) {
