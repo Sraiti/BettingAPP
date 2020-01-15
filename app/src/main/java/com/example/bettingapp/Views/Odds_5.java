@@ -3,16 +3,19 @@ package com.example.bettingapp.Views;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.service.autofill.FieldClassification;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bettingapp.Adapters.Match_adapter;
+import com.example.bettingapp.Moduls.match;
 import com.example.bettingapp.R;
 import com.example.bettingapp.util.FireStore;
 
@@ -24,7 +27,7 @@ public class Odds_5 extends Fragment implements Serializable {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    public static RecyclerView.Adapter<RecyclerView.ViewHolder> adapter;
+    public static Match_adapter adapter;
 
     private String mParam1;
     private String mParam2;
@@ -71,7 +74,7 @@ public class Odds_5 extends Fragment implements Serializable {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        FireStore fireStore = FireStore.getInstence();
+        final FireStore fireStore = FireStore.getInstence();
 
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_oddssince, container, false);
@@ -90,6 +93,14 @@ public class Odds_5 extends Fragment implements Serializable {
         adapter = new Match_adapter(getActivity(), fireStore.mRecyclerViewItems5);
         mRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+        adapter.setOnItemClickListerner(new Match_adapter.onItemClickListener() {
+            @Override
+            public void onItemClick(int posistion) {
+                match item= (match) fireStore.mRecyclerViewItems5.get(posistion);
+                Toast.makeText(getActivity(), item.getCote(), Toast.LENGTH_SHORT).show();
+            }
+        });
+       
 
         return rootView;
     }

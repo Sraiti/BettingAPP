@@ -27,13 +27,6 @@
                 android:layout_height="match_parent"
                 android:background="@color/colorHub" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/ic_menu_share" />
 
             <TextView
                 android:id="@+id/txt_league"
@@ -70,8 +63,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="5dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="5dp">
 
                 <TextView
                     android:id="@+id/txt_teamA"
@@ -84,7 +77,7 @@
                     android:padding="5dp"
                     android:text="Team 1"
                     android:textColor="@color/colorHub"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/txt_TeamB"
@@ -97,7 +90,7 @@
                     android:padding="5dp"
                     android:text="Team 2"
                     android:textColor="@color/color6"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <TextView
@@ -120,16 +113,29 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/txt_expectation"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/browser_actions_bg_grey"
-            android:fontFamily="@font/open_sans"
-            android:padding="8dp"
-            android:text="Draw"
-            android:textColor="@color/colorAccent"
-            android:textSize="14sp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_expectation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="TextView"
+                    android:textColor="@color/colorAccent" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 

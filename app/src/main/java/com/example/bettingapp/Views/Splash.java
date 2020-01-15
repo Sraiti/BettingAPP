@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -55,7 +56,7 @@ public class Splash extends AppCompatActivity {
                     handler.postDelayed(this, 1000);
                     //Toast.makeText(Splash.this, "not", Toast.LENGTH_SHORT).show();
                     Log.d("TAG", "STucked I think");
-
+                    Toast.makeText(Splash.this, "isload", Toast.LENGTH_SHORT).show();
                 } else {
                     // do actions
                     if (dataFireStore.isObjLoaded && fireStore.isloadData) {

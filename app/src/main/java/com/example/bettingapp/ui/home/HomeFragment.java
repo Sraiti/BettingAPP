@@ -38,8 +38,8 @@ public class HomeFragment extends Fragment implements Odds_5.OnFragmentInteracti
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         TabLayout tabLayout = root.findViewById(R.id.tablayout);
-        tabLayout.addTab(tabLayout.newTab().setText("10+Odds"));
         tabLayout.addTab(tabLayout.newTab().setText("5+Odds"));
+        tabLayout.addTab(tabLayout.newTab().setText("10+Odds"));
         tabLayout.addTab(tabLayout.newTab().setText("Old Tips"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
